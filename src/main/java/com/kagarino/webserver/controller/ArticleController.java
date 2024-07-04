@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/kagarino-article")
-public class KagarinoArticleController {
+public class ArticleController {
 
 }
 

@@ -22,7 +22,7 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("kagarino_comment")
-public class KagarinoComment implements Serializable {
+public class Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

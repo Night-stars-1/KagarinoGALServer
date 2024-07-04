@@ -1,3 +1,60 @@
 spring:
   profiles:
     active: dev
+  flyway:
+    # 启用或禁用 flyway
+    enabled: true
+    # flyway 的 clean 命令会删除指定 schema 下的所有 table, 生产务必禁掉。这个默认值是 false 理论上作为默认配置是不科学的。
+    clean-disabled: true
+    # SQL 脚本的目录,多个路径使用逗号分隔 默认值 classpath:db/migration
+    locations: classpath:db/migration
+    #  metadata 版本控制信息表 默认 flyway_schema_history
+    table: flyway_schema_history
+    # 如果没有 flyway_schema_history 这个 metadata 表， 在执行 flyway migrate 命令之前, 必须先执行 flyway baseline 命令
+    # 设置为 true 后 flyway 将在需要 baseline 的时候, 自动执行一次 baseline。
+    baseline-on-migrate: true
+    # 指定 baseline 的版本号,默认值为 1, 低于该版本号的 SQL 文件, migrate 时会被忽略
+    baseline-version: 1
+    # 字符编码 默认 UTF-8
+    encoding: UTF-8
+    # 是否允许不按顺序迁移 开发建议 true  生产建议 false
+    out-of-order: false
+    # 数据库名
+    schemas: kagarino
+    # 执行迁移时是否自动调用验证   当你的 版本不符合逻辑 比如 你先执行了 DML 而没有 对应的DDL 会抛出异常
+    validate-on-migrate: true
+knife4j:
+  enable: true  # 启用Knife4j增强模式
+  documents:
+    - group: "2.X版本"  # 文档分组名称
+      name: "接口签名"  # 文档的名称，显示在UI界面
+      locations: "classpath:sign/*"  # Markdown文件的存放位置
+  setting:
+    language: "zh-CN"  # UI界面的默认语言设置为中文
+    enable-swagger-models: true  # 显示Swagger Models面板
+    enable-document-manage: true  # 启用文档管理功能
+    swagger-model-name: "实体类列表"  # Swagger Models面板的名称
+    enable-version: true  # 关闭接口版本控制显示
+    enable-reload-cache-parameter: false  # 关闭调试时自动刷新缓存参数功能
+    enable-after-script: true  # 启用AfterScript，允许在API调试后执行脚本
+    enable-filter-multipart-api-method-type: "POST"  # 设置多类型接口过滤为POST
+    enable-filter-multipart-apis: false  # 关闭多类型接口地址参数的过滤
+    enable-request-cache: true  # 启用请求参数缓存
+    enable-host: false  # 关闭自定义Host功能
+    enable-host-text: "192.168.0.193:8000"  # 自定义Host地址
+    enable-home-custom: true  # 启用自定义主页内容
+    home-custom-path: "classpath:markdown/home.md"  # 自定义主页内容的路径
+    enable-search: false  # 禁用UI界面中的搜索框
+    enable-footer: false  # 不显示Footer
+    enable-footer-custom: false  # 启用自定义Footer内容
+    footer-custom-content: ""  # 自定义Footer内容
+    enable-dynamic-parameter: false  # 关闭动态参数调试功能
+    enable-debug: true  # 关闭调试功能
+    enable-open-api: true  # 关闭OpenAPI规范的显示
+    enable-group: true  # 关闭服务分组的显示
+  cors: false  # 关闭默认的跨域配置
+  production: false  # 开启生产环境保护策略
+  basic:
+    enable: false  # 关闭Basic HTTP认证
+    username: "test"  # Basic HTTP认证的用户名
+    password: "12313"  # Basic HTTP认证的密码

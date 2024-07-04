@@ -1,6 +1,6 @@
 package com.kagarino.webserver;
 
-import com.kagarino.webserver.controller.KagarinoUserController;
+import com.kagarino.webserver.controller.UserController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +18,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class WelcomeTest {
 
     @Autowired
-    KagarinoUserController kagarinoUserController;
+    UserController userController;
 
     @Test
-    public void createUserTest(){
+    public void createUserTest() {
         String username = "zwj123";
         String password = "123";
         String mail = "x3011703521@163.com";

@@ -1,7 +1,7 @@
 package com.kagarino.webserver.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.kagarino.webserver.entity.KagarinoComment;
+import com.kagarino.webserver.entity.Comment;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.kagarino.webserver.entity.KagarinoComment;
  * @since 2024-06-05
  */
 
-public interface KagarinoCommentService extends IService<KagarinoComment> {
+public interface CommentService extends IService<Comment> {
 
 }

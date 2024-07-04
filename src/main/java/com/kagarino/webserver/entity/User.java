@@ -3,8 +3,7 @@ package com.kagarino.webserver.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -23,16 +22,16 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel("用户实体类")
+@Schema(description = "用户实体类")
 @TableName("kagarino_user")
-public class KagarinoUser implements Serializable {
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 用户ID主键
      */
-    @ApiModelProperty(value = "用户ID主键", required = true, example = "村雨遥")
+    @Schema(description = "用户ID主键", required = true, example = "村雨遥")
     @TableId(value = "user_id", type = IdType.AUTO)
     private Long userId;
 

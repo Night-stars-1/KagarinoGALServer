@@ -19,7 +19,7 @@ spring:
     port: ${REDIS_PORT}
     database: 0
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:kagarino}?useUnicode=true&characterEncoding=utf8&createDatabaseIfNotExist=true
     username: ${MYSQL_USER}
     password: ${MYSQL_PASS}
     driver-class-name: com.mysql.cj.jdbc.Driver

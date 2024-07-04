@@ -1,7 +1,7 @@
 package com.kagarino.webserver.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.kagarino.webserver.entity.KagarinoArticle;
+import com.kagarino.webserver.entity.Article;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2024-06-05
  */
 @Mapper
-public interface KagarinoArticleMapper extends BaseMapper<KagarinoArticle> {
+public interface ArticleMapper extends BaseMapper<Article> {
 
 }

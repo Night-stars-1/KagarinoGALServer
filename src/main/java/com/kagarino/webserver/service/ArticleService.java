@@ -1,7 +1,7 @@
 package com.kagarino.webserver.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.kagarino.webserver.entity.KagarinoArticle;
+import com.kagarino.webserver.entity.Article;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import com.kagarino.webserver.entity.KagarinoArticle;
  * @since 2024-06-05
  */
 
-public interface KagarinoArticleService extends IService<KagarinoArticle> {
+public interface ArticleService extends IService<Article> {
 
 }

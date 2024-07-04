@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/kagarino-comment")
-public class KagarinoCommentController {
+public class CommentController {
 
 }
 

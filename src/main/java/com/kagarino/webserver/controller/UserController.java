@@ -2,10 +2,10 @@ package com.kagarino.webserver.controller;
 
 
 import com.kagarino.webserver.entity.Result;
-import com.kagarino.webserver.service.KagarinoUserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import com.kagarino.webserver.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.*;
  * @author zwj
  * @since 2024-06-05
  */
-@Api(value = "测试",tags = "用户管理测试")
+@Tag(name = "用户模块", description = "用户管理测试")
 @RestController
 @RequestMapping("/user")
-public class KagarinoUserController {
+public class UserController {
     @Autowired
-    private KagarinoUserService kagarinoUserService;
+    private UserService userService;
 
     /**
      * @Auther: zwj
@@ -31,14 +31,15 @@ public class KagarinoUserController {
      * @Params: 用户名 用户密码 用户邮箱 验证码
      * @Return: 成功与否及提示
      */
-    @ApiOperation(value = "用户注册",notes = "用户注册")
+    @Operation(summary = "用户注册", description = "用户注册")
     @PostMapping("/welcome/logon")
-    public Result<String> createUser(@ApiParam(name = "username",value = "用户名",required = true) String username,
-                                     @ApiParam(name = "password",value = "用户密码",required = true)String password,
-                                     @ApiParam(name = "mail",value = "用户邮箱",required = true)String mail,
-                                     @ApiParam(name = "code",value = "验证码",required = true)String code){
-        return kagarinoUserService.createUser(username,password,mail,code);
+    public Result<String> createUser(@Parameter(name = "username", description = "用户名", required = true) String username,
+                                     @Parameter(name = "password", description = "用户密码", required = true) String password,
+                                     @Parameter(name = "mail", description = "用户邮箱", required = true) String mail,
+                                     @Parameter(name = "code", description = "验证码", required = true) String code) {
+        return userService.createUser(username, password, mail, code);
     }
+
     /**
      * @Auther: zwj
      * @Date: 2024/6/10 15:52
@@ -47,9 +48,10 @@ public class KagarinoUserController {
      * @Return: 成功与否及提示
      */
     @GetMapping("/welcome/logon")
-    public Result<String> verifyMail(String mail){
-        return kagarinoUserService.sendLogonMail(mail);
+    public Result<String> verifyMail(String mail) {
+        return userService.sendLogonMail(mail);
     }
+
     /**
      * @Auther: zwj
      * @Date: 2024/6/10 15:59
@@ -58,9 +60,10 @@ public class KagarinoUserController {
      * @Return: 成功与否及提示
      */
     @PutMapping("/welcome/login")
-    public Result<String> login(String username,String password){
-        return kagarinoUserService.login(username,password);
+    public Result<String> login(String username, String password) {
+        return userService.login(username, password);
     }
+
     /**
      * @Auther: zwj
      * @Date: 2024/6/10 21:29
@@ -69,9 +72,10 @@ public class KagarinoUserController {
      * @Return: 成功与否及提示
      */
     @PutMapping("/welcome/reset")
-    public Result<String> resetUserPassword(String username,String mail,String password,String code){
-        return kagarinoUserService.resetUserPassword(username,mail,password,code);
+    public Result<String> resetUserPassword(String username, String mail, String password, String code) {
+        return userService.resetUserPassword(username, mail, password, code);
     }
+
     /**
      * @Auther: zwj
      * @Date: 2024/6/10 15:52
@@ -80,8 +84,8 @@ public class KagarinoUserController {
      * @Return: 成功与否及提示
      */
     @GetMapping("/welcome/reset")
-    public Result<String> resetMail(String mail){
-        return kagarinoUserService.sendResetPasswordMail(mail);
+    public Result<String> resetMail(String mail) {
+        return userService.sendResetPasswordMail(mail);
     }
 }
 
